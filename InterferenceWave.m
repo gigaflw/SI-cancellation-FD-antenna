@@ -1,4 +1,6 @@
-function y = InterferenceWave(wave, delay)
-    delayWave = [zeros(1, delay*1000), wave(1: end-delay*1000)];
-    noise = wgn(1, fix(2*pi*1000+1), 3);
+function y = InterferenceWave(wave, delay, noiseDB, timeFreq)
+    delayWave = [zeros(1, delay*timeFreq), wave(1: end-delay*timeFreq)];
+    
+    noise = 1000 * wgn(1, fix(timeFreq+1), noiseDB);  % 3dBm = 316 mV
+    
     y = delayWave + noise;

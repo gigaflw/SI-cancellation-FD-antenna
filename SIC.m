@@ -21,26 +21,26 @@ function recovered = SIC(t, i, r, E1, fc1, E2, fc2, lowerDelay)
     lower_recover = circshift(lower_recover, [0, shiftN]);
     
     % plotting
-    cla;
-    subplot(2,2,1);
-    hold on;
-    plot(abs(fft_upper / length(fft_upper)));
-    plot(abs(fft_lower / length(fft_lower)));
-    title('E_{upper} & E_{lower} (frequency domain)');
+%     cla;
+%     subplot(2,2,1);
+%     hold on;
+%     plot(abs(fft_upper / length(fft_upper)));
+%     plot(abs(fft_lower / length(fft_lower)));
+%     title('E_{upper} & E_{lower} (frequency domain)');
     
     recovered = upper_recover + lower_recover;
-    subplot(2,2,2);
-    plot(recovered);
-    % axis([-inf, inf, -1, 1]);
-    title('Signal interested (time domain)');
-
-    subplot(2,2,3);
-    plot(upper_recover);
-    title('Recovered E_{upper}');
-    
-    subplot(2,2,4);
-    plot(lower_recover);  
-    title('Recovered E_{lower}');
+%     subplot(2,2,2);
+%     plot(recovered);
+%     % axis([-inf, inf, -1, 1]);
+%     title('Signal interested (time domain)');
+% 
+%     subplot(2,2,3);
+%     plot(upper_recover);
+%     title('Recovered E_{upper}');
+%     
+%     subplot(2,2,4);
+%     plot(lower_recover);  
+%     title('Recovered E_{lower}');
 end
 
 function y = recoverBySSBC(x)

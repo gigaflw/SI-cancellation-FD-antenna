@@ -18,37 +18,37 @@ function recovered = SIC(t, received, reference, E1, fc1, E2, fc2, lowerDelay)
     upper_recover = recoverBySSBC(fft_upper);
     lower_recover = recoverBySSBC(fft_lower);
     
-    shiftN = lowerDelay / T;
-    lower_recover = circshift(lower_recover, [0, shiftN]);
+%     shiftN = lowerDelay / T;
+%     lower_recover = circshift(lower_recover, [0, shiftN]);
     recovered = upper_recover + lower_recover;
-
-    % plotting
-    cla;
-    subplot(2,2,1);
-	hold on;
-	plot(abs(fft_upper / length(fft_upper)));
-	plot(abs(fft_lower / length(fft_lower)));
-	title('E_{upper} & E_{lower} (frequency domain)');
-
-	subplot(2,2,2);
-	hold on;
-	rcef = timeToLogFreq(received);
-	rcof = timeToLogFreq(recovered);
-    % fRF = find(rcef == max(rcef));
-    % rcef = rcef(fRF - 100 : fRF + 100);
-    % rcof = rcof(fRF - 100 : fRF + 100);
-	plot(rcef);
-	plot(rcof);
-    % axis([fRF-100, fRF+100, -inf, +inf]);
-	title('Signal interested (time domain)');
-
-	subplot(2,2,3);
-	plot(upper_recover);
-	title('Recovered E_{upper}');
-
-	subplot(2,2,4);
-	plot(lower_recover);
-	title('Recovered E_{lower}');
+% 
+%     % plotting
+%     cla;
+%     subplot(2,2,1);
+% 	hold on;
+% 	plot(abs(fft_upper / length(fft_upper)));
+% 	plot(abs(fft_lower / length(fft_lower)));
+% 	title('E_{upper} & E_{lower} (frequency domain)');
+% 
+% 	subplot(2,2,2);
+% 	hold on;
+% 	rcef = timeToLogFreq(received);
+% 	rcof = timeToLogFreq(recovered);
+%     % fRF = find(rcef == max(rcef));
+%     % rcef = rcef(fRF - 100 : fRF + 100);
+%     % rcof = rcof(fRF - 100 : fRF + 100);
+% 	plot(rcef);
+% 	plot(rcof);
+%     % axis([fRF-100, fRF+100, -inf, +inf]);
+% 	title('Signal interested (time domain)');
+% 
+% 	subplot(2,2,3);
+% 	plot(upper_recover);
+% 	title('Recovered E_{upper}');
+% 
+% 	subplot(2,2,4);
+% 	plot(lower_recover);
+% 	title('Recovered E_{lower}');
 end
 
 function y = recoverBySSBC(x)
